@@ -1,0 +1,36 @@
+{
+  "name": "whiteroom/news-artworkdata",
+  "type": "typo3-cms-extension",
+  "description": "Extend news by a artwork data",
+  "keywords": [
+    "TYPO3",
+    "extension",
+    "news"
+  ],
+  "authors": [
+    {
+      "name": "whiteroom",
+      "role": "Developer",
+      "homepage": "https://whiteroom.ch/"
+    }
+  ],
+  "license": [
+    "GPL-2.0"
+  ],
+  "require": {
+    "typo3/cms-core": "~9.5.0||~10.0.0||dev-master",
+    "georgringer/news": ">3.2.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Whiteroom\\NewsArtworkdata\\": "Classes"
+    }
+  },
+  "replace": {
+    "news-feuser": "self.version",
+    "typo3-ter/news_artworkdata": "self.version"
+  }
+}

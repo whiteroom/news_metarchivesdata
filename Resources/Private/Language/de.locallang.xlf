@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2016-06-02T20:47:10Z" product-name="news_metarchivesdata">
+		<header/>
+		<body>
+
+			<trans-unit id="tx_news_domain_model_news.tx_news_metarchivesdata_subtitle" xml:space="preserve">
+				<source>Subtitle</source>
+				<target state="translated">Untertitel</target>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_news_metarchivesdata_recordtype" xml:space="preserve">
+				<source>Type</source>
+				<target state="translated">Typ</target>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_news_metarchivesdata_recordcollection" xml:space="preserve">
+				<source>Collection</source>
+				<target state="translated">Sammlung</target>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_news_metarchivesdata_recordquarter" xml:space="preserve">
+				<source>Quarter</source>
+				<target state="translated">Quartal</target>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_news_metarchivesdata_recordsubprojects" xml:space="preserve">
+				<source>Subprojects</source>
+				<target state="translated">Sub-Projekt</target>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_news_metarchivesdata_recordmanager" xml:space="preserve">
+				<source>Record Manager</source>
+				<target state="translated">Eintragungsverantwortlich</target>
+			</trans-unit>
+
+				
+		</body>
+	</file>
+</xliff>

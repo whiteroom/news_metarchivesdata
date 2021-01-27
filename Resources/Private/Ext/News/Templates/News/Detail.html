@@ -1,0 +1,315 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  xmlns:rx="http://typo3.org/ns/Reelworx/RxShariff/ViewHelper"
+	  xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+
+<f:layout name="Detail" />
+
+<!--
+	=====================
+		News/Detail.html
+-->
+
+<f:section name="content">
+	<f:if condition="{newsItem}">
+		
+		<f:then>
+		
+		<div class="ce-gallery right">
+			<f:render partial="Detail/MediaContainer" arguments="{media: newsItem.mediaNonPreviews, settings:settings, contentObjectData:contentObjectData}" />
+		</div>
+		<div class="ce-bodytext left">
+			
+			
+			<n:format.nothing>
+				<!-- 	Template Selector	 -->
+				<f:if condition="{settings.templateLayout} == 1"></f:if>
+			</n:format.nothing>
+			
+			<div class="header">
+				<f:if condition="{newsItem.categories}">
+					<f:then><h4 itemprop="headline"><strong><f:render partial="Category/Items" arguments="{categories:newsItem.categories, settings:settings}" /></strong><br></f:then>
+					<f:else><h4 itemprop="headline"></f:else>
+				</f:if>{newsItem.title}</h4>
+				
+			</div>
+			
+			
+			
+			
+			<p class="meta">
+				<!-- author -->
+				<f:comment><f:if condition="{newsItem.author}">
+					<span class="news-list-author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
+						<f:translate key="author_simple" /> <span itemprop="name">{newsItem.author}</span>
+					</span> &#124;
+				</f:if>
+				<!-- date -->
+				<span class="news-list-date">
+					<time itemprop="datePublished" datetime="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}">
+						<f:format.raw><f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date></f:format.raw>
+					</time>
+				</span><br></f:comment>
+				
+				<f:if condition="{newsItem.categories}">
+					<strong><f:translate key="categories" />: </strong><f:render partial="Category/Items" arguments="{categories:newsItem.categories, settings:settings}" />
+				</f:if>
+				
+				<f:comment><f:if condition="{newsItem.title}">
+					<strong><f:translate key="titled" />: </strong>{newsItem.title}<br>
+				</f:if></f:comment>
+				
+			
+				<f:comment><!-- dated -->
+				<strong><f:translate key="dated" />: </strong><span class="news-list-date">
+					<time itemprop="datePublished" datetime="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}">
+						<f:format.raw><f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date></f:format.raw>
+					</time>
+				</span></f:comment>
+				
+	
+				<f:if condition="{newsItem.tags}">
+					<br><strong><f:translate key="tags" />: </strong> 
+					<f:for each="{newsItem.tags}" as="tag" iteration="iteratorTags"> 
+						<f:if condition="{iteratorTags.cycle} > 1">&#124;</f:if>
+						
+						<f:if condition="{iteratorTags.isFirst}">
+							<f:then>
+								<span class="news-list-tags first" itemprop="keywords">
+									<f:link.page pageUid="{settings.listPid}" additionalParams="{tx_news_pi1:{overwriteDemand:{tags: tag}}}">{tag.title}</f:link.page>
+								</span>
+							</f:then>
+							<f:else>
+								<f:if condition="{iteratorTags.isLast}">
+									<f:then>
+										<span class="news-list-tags last" itemprop="keywords">
+											<f:link.page pageUid="{settings.listPid}" additionalParams="{tx_news_pi1:{overwriteDemand:{tags: tag}}}">{tag.title}</f:link.page>
+										</span>
+									</f:then>
+									<f:else>
+										<span class="news-list-tags" itemprop="keywords">
+											<f:link.page pageUid="{settings.listPid}" additionalParams="{tx_news_pi1:{overwriteDemand:{tags: tag}}}">{tag.title}</f:link.page>
+										</span>
+									</f:else>
+								</f:if>
+							</f:else>
+						</f:if>
+					</f:for>
+				</f:if>
+
+			</p>
+
+		
+		
+		
+			
+			
+			
+
+			<f:if condition="{newsItem.teaser}">
+    				<!-- teaser -->
+    				<div class="teaser-text" itemprop="description">
+    					<f:format.html>{newsItem.teaser}</f:format.html>
+    				</div>
+    			</f:if>
+
+			<f:if condition="{newsItem.contentElements}">
+				<!-- content elements -->
+				<f:cObject typoscriptObjectPath="lib.tx_news.contentElementRendering">{newsItem.contentElementIdList}</f:cObject>
+			</f:if>
+
+			
+
+			<!-- main text -->
+			<div class="news-text-wrap" itemprop="articleBody">
+    			
+    			<f:if condition="{newsItem.bodytext}">
+    			
+        			<f:then><f:format.html>{newsItem.bodytext}</f:format.html></f:then>
+        			<f:else>
+            			<p>
+            			<strong>{f:translate(key: 'artworkdata.media', extensionName: 'news_artworkdata')}:</strong> {newsItem.ArtworkdataTechnik} <br>
+            			<strong>{f:translate(key: 'artworkdata.dimensions', extensionName: 'news_artworkdata')}:</strong> {newsItem.ArtworkdataFormat} cm <br>
+            			<strong>{f:translate(key: 'artworkdata.year', extensionName: 'news_artworkdata')}:</strong> {f:if(condition: '{newsItem.ArtworkdataJahr}', then: '{newsItem.ArtworkdataJahr}', else: '{f:translate(key: "artworkdata.Jahr-notGiven", extensionName: "news_artworkdata")}')} <br>
+            			</p>
+            			
+            			<p>
+            			<strong>{f:translate(key: 'artworkdata.edition', extensionName: 'news_artworkdata')}:</strong> {newsItem.ArtworkdataAuflage} <br>
+            			
+            			
+            			<strong>{f:translate(key: 'artworkdata.price', extensionName: 'news_artworkdata')}:</strong>
+            			        			
+            			{f:if(condition: '{newsItem.ArtworkdataTotalpreis}', then: '{newsItem.ArtworkdataTotalpreis} CHF',else:'{f:translate(key: \'artworkdata.on-request\', extensionName: \'news_artworkdata\')}')}
+            			
+            			
+            			</p>
+            			
+            			<f:if condition="{newsItem.authorEmail}">
+                			<f:alias map="{request: '{f:translate(key: \'artworkdata.emailrequest\', extensionName: \'news_artworkdata\')} '}">
+        								 
+        						<p><f:link.email email="{newsItem.authorEmail}?subject=Anfrage%20schoeneck.ch%20Werknummer%20{newsItem.ArtworkdataUid},%20{newsItem.ArtworkdataArtist}:%20{newsItem.title}&body=Hallo%0AIch%20interessiere%20mich%20folgendes%20Werk%20auf%20ihrer%20Webseite%20https%3A%2F%2Fschoeneck.ch%20und%20w%C3%BCnsche%20weitere%20Informationen:%0A%0AWork-ID%2FWerknummer%3A%20{newsItem.ArtworkdataUid}%0ATitle%2FTitel%3A%20{newsItem.title}%0AArtist%2FK%C3%BCnstler%3A%20{newsItem.ArtworkdataArtistVorname}%20{newsItem.ArtworkdataArtistName}%0A%0ABitte%20kontaktieren%20sie%20mich.">{request}</f:link.email></p>		
+                            									
+                            									
+                            </f:alias>
+            			</f:if>
+        			</f:else>
+    			</f:if>
+    			
+    			
+    			
+				
+			</div>
+
+			
+
+			<f:if condition="{settings.detail.showSocialShareButtons}">
+				<f:comment>
+					Care about the privacy of your readers?
+					Checkout https://typo3.org/extensions/repository/view/rx_shariff
+					and it will be used automatically!
+				</f:comment>
+				<n:extensionLoaded extensionKey="rx_shariff">
+					<f:then>
+						<f:render partial="Detail/Shariff" />
+					</f:then>
+					<f:else>
+						<div class="social">
+							<div class="like">
+								<n:social.facebook.like />
+							</div>
+							<div class="share">
+								<n:social.facebook.share />
+							</div>
+							<div class="twitter">
+								<n:social.twitter>Twitter</n:social.twitter>
+							</div>
+						</div>
+					</f:else>
+				</n:extensionLoaded>
+			</f:if>
+
+			<f:if condition="{settings.detail.disqusShortname}">
+				<div id="disqus_thread"></div>
+				<n:social.disqus newsItem="{newsItem}"
+								 shortName="{settings.detail.disqusShortname}"
+								 link="{n:link(newsItem:newsItem, settings:settings, uriOnly:1, configuration:'{forceAbsoluteUrl:1}')}" />
+			</f:if>
+
+			<!-- related things -->
+			<div class="news-related-wrap">
+
+				<f:if condition="{newsItem.allRelatedSorted}">
+					<!-- Related news records -->
+					<div class="news-related news-related-news">
+						<h4 class="mt-5 mb-2"><f:translate key="related-news" /></h4>
+						<ul class="related mt-1 p-0">
+							<f:for each="{newsItem.allRelatedSorted}" as="related">
+								<li class="next">
+									<n:link newsItem="{related}" settings="{settings}" title="{related.title}">{related.title}
+										 &#x007C; <strong><f:render partial="Category/Unlinked" arguments="{categories:related.categories, settings:settings}" /></strong>&#x2002;<f:comment><span aria-hidden="true" class="icon-arrow-right2"></span></f:comment>
+									</n:link>
+								</li>
+							</f:for>
+						</ul>
+					</div>
+				</f:if>
+
+				<f:if condition="{newsItem.falRelatedFiles}">
+					<!-- FAL related files -->
+					<div class="news-related news-related-files">
+						<h4 class="mt-5 mb-2"><f:translate key="related-files" /></h4>
+						<ul>
+							<f:for each="{newsItem.falRelatedFiles}" as="relatedFile">
+								<li>
+									<span class="news-related-files-link">
+										<a href="{relatedFile.originalResource.publicUrl -> f:format.htmlspecialchars()}" target="_blank">
+											{f:if(condition:relatedFile.originalResource.title, then:relatedFile.originalResource.title, else:relatedFile.originalResource.name)}
+										</a>
+									</span>
+									<span class="news-related-files-size">
+										{relatedFile.originalResource.size -> f:format.bytes()}
+									</span>
+								</li>
+							</f:for>
+						</ul>
+					</div>
+				</f:if>
+
+				<f:if condition="{newsItem.relatedLinks}">
+					<!-- Related links -->
+					<div class="news-related news-related-links">
+						<h4 class="mt-5 mb-2">
+							<f:translate key="related-links" />
+						</h4>
+						<ul>
+							<f:for each="{newsItem.relatedLinks}" as="relatedLink">
+								<li>
+									<f:link.page pageUid="{relatedLink.uri}" title="{relatedLink.title}" target="{n:targetLink(link:relatedLink.uri)}">{f:if(condition: relatedLink.title, then: relatedLink.title, else: relatedLink.uri)}</f:link.page>
+									<f:if condition="{relatedLink.description}"><span>{relatedLink.description}</span></f:if>
+								</li>
+							</f:for>
+						</ul>
+					</div>
+				</f:if>
+				
+				
+				
+			</div>
+			
+			
+			<f:if condition="{settings.templateLayout} == 3">
+			
+			<h4 class="mt-5 mb-2"><v:page.info  pageUid="{settings.actbackPid}" field="title"></v:page.info>: 
+							<f:translate key="browse" /></h4>
+			
+			<f:if condition="{settings.detail.showPrevNext}">
+				<n:simplePrevNext pidList="{newsItem.pid}" news="{newsItem}" as="paginated" sortField="{settings.orderBy}">
+					<f:if condition="{paginated}">
+					
+						<ul class="pager mt-0 p-0">
+							<f:if condition="{paginated.prev}">
+								<li class="previous ml-0">
+									<n:link newsItem="{paginated.prev}" settings="{settings}" title="{paginated.prev.title}" class="previous">
+									<span aria-hidden="true" class="icon-arrow-left2"></span>&#x2002;<f:for each="{paginated.prev.categories}" as="category"><strong>{category.title}</strong></f:for> &#x007C; {paginated.prev.title} 
+									</n:link>
+								</li>
+							</f:if>
+							<f:if condition="{paginated.next}">
+								<li class="next">
+									<n:link newsItem="{paginated.next}" settings="{settings}" title="{paginated.next.title}" class="next">
+										{paginated.next.title} &#x007C; <f:for each="{paginated.next.categories}" as="category"><strong>{category.title}</strong></f:for>&#x2002;<span aria-hidden="true" class="icon-arrow-right2"></span>
+									</n:link>
+								</li>
+							</f:if>
+						</ul>
+					</f:if>
+				</n:simplePrevNext>
+			</f:if>
+			
+			</f:if>
+			
+			
+			<f:if condition="{settings.actbackPid}">
+					<!-- Link Back -->
+					<h4 class="news-backlink-wrap mt-5">
+						<f:link.page pageUid="{settings.actbackPid}"><v:page.info  pageUid="{settings.actbackPid}" field="title"></v:page.info>: 
+							<f:translate key="back-link" />
+						</f:link.page>
+					</h4>
+			</f:if>
+			
+			
+		</div>
+		
+		
+		
+
+		
+		</f:then>
+		<f:else>
+
+		</f:else>
+	</f:if>
+</f:section>
+</html>
