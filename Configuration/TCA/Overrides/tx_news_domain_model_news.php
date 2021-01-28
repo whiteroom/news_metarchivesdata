@@ -1,9 +1,6 @@
 <?php
 defined('TYPO3_MODE') or die();
 
-// SLUG extended
-$GLOBALS['TCA']['tx_news_domain_model_news']['columns']['path_segment']['config']['generatorOptions']['fields'] =  ['tx_news_metarchivesdata_artist','title'];
-
 
 /*
 $GLOBALS['TCA']['tx_news_domain_model_news']['columns']['teaser']['config']['cols'] = 60;
@@ -19,264 +16,95 @@ $ll_db_tx_news_metarchivesdata = 'LLL:EXT:news_metarchivesdata/Resources/Private
 
 
 $tmp_metarchivesdata = array(
-
-    'tx_news_metarchivesdata_uid' => [
-        'exclude' => false,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_uid',
-        'config' => [
-            'type' => 'input',
-            'size' => 10,
-            'eval' => 'nospace,int,unique',
-        ]
-    ],
         
-    'tx_news_metarchivesdata_title' => [
+    'tx_news_metarchivesdata_subtitle' => [
         'exclude' => false,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_title',
+        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_subtitle',
         'config' => [
             'type' => 'input',
             'size' => 40,
         ]
     ],
-    
-    'tx_news_metarchivesdata_title_alternative' => [
+    'tx_news_metarchivesdata_recordtype' => [
         'exclude' => false,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_title_alternative',
+        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_recordtype',
         'config' => [
-            'type' => 'input',
-            'size' => 30,
+            'type' => 'radio',
+            'default' => '',
+            'items' => [
+                [$ll_db_tx_news_metarchivesdata . 'tx_news_domain_model_news.recordtype.I.0', 0],
+                [$ll_db_tx_news_metarchivesdata . 'tx_news_domain_model_news.recordtype.I.1', 1],
+                [$ll_db_tx_news_metarchivesdata . 'tx_news_domain_model_news.recordtype.I.2', 2],
+                [$ll_db_tx_news_metarchivesdata . 'tx_news_domain_model_news.recordtype.I.3', 3],
+            ],
+        ]
+
+    ],
+    'tx_news_metarchivesdata_recordcollection' => [
+        'exclude' => false,
+        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_recordcollection',
+        'config' => [
+            'type' => 'radio',
+            'default' => '',
+            'items' => [
+                [$ll_db_tx_news_metarchivesdata . 'tx_news_domain_model_news.recordcollection.I.0', 0],
+                [$ll_db_tx_news_metarchivesdata . 'tx_news_domain_model_news.recordcollection.I.1', 1],
+                [$ll_db_tx_news_metarchivesdata . 'tx_news_domain_model_news.recordcollection.I.2', 2],
+            ],
         ]
     ],
-    'tx_news_metarchivesdata_artist' => [
+    'tx_news_metarchivesdata_recordquarter' => [
         'exclude' => false,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_artist',
+        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_recordquarter',
         'config' => [
-            'type' => 'input',
-            'size' => 60,
-            'eval' => 'trim',
+            'type' => 'radio',
+            'default' => '',
+            'items' => [
+                ['Q1', 'Q1'],
+                ['Q2', 'Q2'],
+                ['Q3', 'Q3'],
+                ['Q4', 'Q4'],
+                ['Q5', 'Q5'],
+                ['Q6', 'Q6'],
+                ['Q7', 'Q7'],
+                ['Q8', 'Q8'],
+            ],
+            'cols' => 'inline',
         ]
     ],
-    'tx_news_metarchivesdata_artist_index' => [
-        'exclude' => true,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_artist_index',
-        'config' => [
-            'type' => 'input',
-            'size' => 5,
-            'eval' => 'nospace,int,unique',
-        ],
-    ],
-    'tx_news_metarchivesdata_artist_name' => [
+    'tx_news_metarchivesdata_recordsubprojects' => [
         'exclude' => false,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_artist_name',
-        'config' => [
-            'type' => 'input',
-            'size' => 30,
-            'eval' => 'trim',
-        ]
-    ],
-    'tx_news_metarchivesdata_artist_vorname' => [
-        'exclude' => false,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_artist_vorname',
-        'config' => [
-            'type' => 'input',
-            'size' => 30,
-            'eval' => 'trim',
-        ]
-    ],
-    'tx_news_metarchivesdata_auflage' => [
-        'exclude' => false,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_auflage',
-        'config' => [
-            'type' => 'input',
-            'size' => 30,
-        ]
-    ],
-    'tx_news_metarchivesdata_format' => [
-        'exclude' => false,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_format',
-        'config' => [
-            'type' => 'input',
-            'size' => 30,
-        ]
-    ],
-    'tx_news_metarchivesdata_jahr' => [
-        'exclude' => false,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_jahr',
-        'config' => [
-            'type' => 'input',
-            'size' => 30,
-        ]
-    ],
-    'tx_news_metarchivesdata_technik' => [
-        'exclude' => false,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_technik',
-        'config' => [
-            'type' => 'input',
-            'size' => 30,
-        ]
-    ],
-    'tx_news_metarchivesdata_codezeile' => [
-        'exclude' => true,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_codezeile',
-        'config' => [
-            'type' => 'input',
-            'size' => 40,
-            'eval' => 'nospace,alphanum_x,lower,unique',
-        ],
-    ],
-    'tx_news_metarchivesdata_recordtext' => [
-        'exclude' => false,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_recordtext',
+        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_recordsubprojects',
         'config' => [
             'type' => 'select',
-            'renderType' => 'selectSingle',
+            'renderType' => 'selectCheckBox',
             'items' => [
-                ['', ''],
-                [$ll_db_tx_news_metarchivesdata . 'tx_news_domain_model_news.type.I.0', 'Edition der Galerie'],
-                [$ll_db_tx_news_metarchivesdata . 'tx_news_domain_model_news.type.I.1', 'Eigentum des Künstlers'],
-                [$ll_db_tx_news_metarchivesdata . 'tx_news_domain_model_news.type.I.2', 'Werk im Besitz der Galerie'],
-                [$ll_db_tx_news_metarchivesdata . 'tx_news_domain_model_news.type.I.3', 'Eigentum Kunden'],
-                [$ll_db_tx_news_metarchivesdata . 'tx_news_domain_model_news.type.I.4', 'Eigentum Hans Schoeneck'],
-                [$ll_db_tx_news_metarchivesdata . 'tx_news_domain_model_news.type.I.5', 'Eigentum Beat Schoeneck'],
+                ['A1', 'A1'],                
+                ['A2', 'A2'],                
+                ['B1', 'B1'],                
+                ['B2', 'B2'],                
+                ['C1', 'C1'],                
+                ['C2', 'C2'],
             ],
-            'fieldWizard' => [
-                'selectIcons' => [
-                    'disabled' => false,
-                ],
+        ]
+    ],
+    'tx_news_metarchivesdata_recordmanager' => [
+        'exclude' => false,
+        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_recordmanager',
+        'config' => [
+            'type' => 'select',
+            'renderType' => 'selectCheckBox',
+            'items' => [
+                ['UF', 'UF'],                
+                ['WL', 'WL'],                
+                ['PF', 'PF'],                
+                ['DD', 'DD'],                
+                ['MF', 'MF'],                
+                ['… (alle Teammitglieder)', 'alle Teamitglieder'],
             ],
-            'size' => 1,
-            'maxitems' => 1,
         ]
     ],
-    'tx_news_metarchivesdata_recordcode' => [
-        'exclude' => true,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_recordcode',
-        'config' => [
-            'type' => 'input',
-            'size' => 5,
-            'eval' => 'nospace,upper,alphanum',
-        ],
-    ],
-    'tx_news_metarchivesdata_erfassung' => [
-        'exclude' => true,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_erfassung',
-        'config' => [
-            'type' => 'input',
-            'size' => 10,
-            'eval' => 'trim',
-        ],
-    ],
-    'tx_news_metarchivesdata_geprueft' => [
-        'exclude' => true,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_geprueft',
-        'config' => [
-            'type' => 'input',
-            'size' => 10,
-            'eval' => 'trim',
-        ],
-    ],    
-    'tx_news_metarchivesdata_disponibel' => [
-        'exclude' => true,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_disponibel',
-        'config' => [
-            'type' => 'check',
-            'default' => 1,
-        ]
-    ],
-    'tx_news_metarchivesdata_technikcode' => [
-        'exclude' => true,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_technikcode',
-        'config' => [
-            'type' => 'input',
-            'size' => 30,
-            'eval' => 'nospace,alphanum',
-        ],
-    ],
-    'tx_news_metarchivesdata_verkauft' => [
-        'exclude' => true,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_verkauft',
-        'config' => [
-            'type' => 'check',
-            'default' => 0,
-        ]
-    ],
-    'tx_news_metarchivesdata_standort' => [
-        'exclude' => true,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_standort',
-        'config' => [
-            'type' => 'input',
-            'size' => 60,
-        ]
-    ],
-    'tx_news_metarchivesdata_verkaeufer' => [
-        'exclude' => true,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_verkaeufer',
-        'config' => [
-            'type' => 'input',
-            'size' => 30,
-        ]
-    ],
-    'tx_news_metarchivesdata_verkaeufernummer' => [
-        'exclude' => true,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_verkaeufernummer',
-        'config' => [
-            'type' => 'input',
-            'size' => 10,
-            'eval' => 'int',
-        ],
-    ],
-    'tx_news_metarchivesdata_einkaufspreis' => [
-        'exclude' => true,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_einkaufspreis',
-        'config' => [
-            'type' => 'input',
-            'size' => 5,
-            'eval' => 'double2',
-        ],
-    ],
-    'tx_news_metarchivesdata_verkaufspreis' => [
-        'exclude' => true,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_verkaufspreis',
-        'config' => [
-            'type' => 'input',
-            'size' => 5,
-            'eval' => 'double2',
-        ],
-    ],
-    'tx_news_metarchivesdata_rahmenpreis' => [
-        'exclude' => true,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_rahmenpreis',
-        'config' => [
-            'type' => 'input',
-            'size' => 5,
-            'eval' => 'double2',
-        ],
-    ],
-    'tx_news_metarchivesdata_totalpreis' => [
-        'exclude' => true,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_totalpreis',
-        'config' => [
-            'type' => 'input',
-            'size' => 5,
-            'eval' => 'double2',
-        ],
-    ],
-    'tx_news_metarchivesdata_notes' => [
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_notes',
-        'config' => [
-            'type' => 'text',
-            'rows' => 10,
-            'cols' => 48,
-        ]
-    ],
-    'tx_news_metarchivesdata_import' => [
-        'exclude' => true,
-        'label' => $ll_tx_news_metarchivesdata . 'tx_news_domain_model_news.tx_news_metarchivesdata_import',
-        'config' => [
-            'type' => 'check',
-            'default' => 1,
-        ]
-    ],
+
 );
 
 
@@ -314,53 +142,45 @@ $GLOBALS['TCA']['tx_news_domain_model_news']['types']['0'] = [
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
  'tx_news_domain_model_news',
- 'paletteArtwork',
- 'tx_news_metarchivesdata_title_alternative,--linebreak--,tx_news_metarchivesdata_auflage,tx_news_metarchivesdata_format,tx_news_metarchivesdata_jahr,--linebreak--,tx_news_metarchivesdata_technik,tx_news_metarchivesdata_technikcode,tx_news_metarchivesdata_disponibel,tx_news_metarchivesdata_verkauft'
+ 'paletteCollection',
+ 'tx_news_metarchivesdata_recordcollection,--linebreak--'
 );    
     
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
  'tx_news_domain_model_news',
- 'paletteArtist',
- 'tx_news_metarchivesdata_artist,tx_news_metarchivesdata_artist_index,--linebreak--,tx_news_metarchivesdata_artist_vorname,tx_news_metarchivesdata_artist_name'
+ 'paletteTimeframe',
+ 'tx_news_metarchivesdata_recordquarter'
 );    
         
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
  'tx_news_domain_model_news',
- 'paletteCharacteristic',
- 'tx_news_metarchivesdata_standort,tx_news_metarchivesdata_geprueft,tx_news_metarchivesdata_erfassung,,--linebreak--,tx_news_metarchivesdata_codezeile'
+ 'paletteSubproject',
+ 'tx_news_metarchivesdata_recordsubprojects'
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
  'tx_news_domain_model_news',
- 'paletteProperty',
- 'tx_news_metarchivesdata_recordtext,tx_news_metarchivesdata_recordcode,--linebreak--,tx_news_metarchivesdata_verkaeufer,tx_news_metarchivesdata_verkaeufernummer,--linebreak--,tx_news_metarchivesdata_einkaufspreis,tx_news_metarchivesdata_verkaufspreis,tx_news_metarchivesdata_rahmenpreis,tx_news_metarchivesdata_totalpreis'
+ 'paletteManager',
+ 'tx_news_metarchivesdata_recordmanager'
 );
-
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
- 'tx_news_domain_model_news',
- 'paletteNotes',
- 'tx_news_metarchivesdata_notes,--linebreak--,tx_news_metarchivesdata_import'
-);
-
-
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
     'tx_news_domain_model_news', 
-    'tx_news_metarchivesdata_uid', 
+    'tx_news_metarchivesdata_subtitle', 
     '', 
-    'before:title'
+    'after:title'
 );
     
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
     'tx_news_domain_model_news', 
-    '--div--;'. $ll_ttc_tx_news_metarchivesdata .'tx_news_domain_model_news.tabs.DDB,tx_news_metarchivesdata_subtitle'
+    '--div--;'. $ll_ttc_tx_news_metarchivesdata .'tx_news_domain_model_news.tabs.DDB,tx_news_metarchivesdata_recordtype'
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
     'tx_news_domain_model_news',
-    '--palette--;;paletteArtwork,--palette--;;paletteArtist,--palette--;;paletteCharacteristic,--palette--;;paletteProperty,,--palette--;;paletteNotes',
+    '--palette--;;paletteCollection,--palette--;;paletteTimeframe,--palette--;;paletteSubproject,--palette--;;paletteManager',
     '',
-    'after:tx_news_metarchivesdata_title'
+    'after:tx_news_metarchivesdata_recordtype'
 );
 
 
