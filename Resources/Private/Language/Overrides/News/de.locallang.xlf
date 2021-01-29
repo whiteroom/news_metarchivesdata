@@ -11,7 +11,7 @@
 			<target state="translated">Suche starten</target></trans-unit>
 			<trans-unit id="search-noresult" xml:space="preserve" approved="yes">
 				<source>No news found.</source>
-			<target state="translated">Keine Nachrichten gefunden.</target></trans-unit>
+			<target state="translated">Keine DDB-Datensätze gefunden.</target></trans-unit>
 			<trans-unit id="search-subject" xml:space="preserve" approved="no">
 				<source>Text</source>
 			<target state="needs-translation">Nächste</target><note>75%</note><alt-trans xml:space="preserve" origin="bodo"><target>Text</target></alt-trans></trans-unit>
@@ -29,7 +29,7 @@
 			<target state="translated">Zurück</target></trans-unit>
 			<trans-unit id="related-news" xml:space="preserve" approved="yes">
 				<source>Related news</source>
-			<target state="translated">Ähnliche Nachrichten</target><alt-trans xml:space="preserve" origin="schlereth"><target>Verwandte Nachrichten</target></alt-trans><alt-trans xml:space="preserve" origin="lobster_1956"><target>Zugeordnete Nachrichten</target></alt-trans></trans-unit>
+			<target state="translated">Ähnliche DDB-Datensätze</target><alt-trans xml:space="preserve" origin="schlereth"><target>Verwandte DDB-Datensätze</target></alt-trans><alt-trans xml:space="preserve" origin="lobster_1956"><target>Zugeordnete DDB-Datensätze</target></alt-trans></trans-unit>
 			<trans-unit id="related-files" xml:space="preserve" approved="yes">
 				<source>Related files</source>
 			<target state="translated">Ähnliche Dateien</target><alt-trans xml:space="preserve" origin="schlereth"><target>Dateien</target></alt-trans><alt-trans xml:space="preserve" origin="lobster_1956"><target>Zugeordnete Dateien</target></alt-trans></trans-unit>
@@ -125,7 +125,7 @@
 			<target state="translated">%d.%m.%Y</target></trans-unit>
 			<trans-unit id="list_nonewsfound" xml:space="preserve" approved="yes">
 				<source>No news available.</source>
-			<target state="translated">Keine Nachrichten verfügbar.</target></trans-unit>
+			<target state="translated">Keine DDB-Datensätze verfügbar.</target></trans-unit>
 			<trans-unit id="list_nocategoriesfound" xml:space="preserve" approved="yes">
 				<source>No categories available.</source>
 			<target state="translated">Keine Kategorien verfügbar.</target></trans-unit>

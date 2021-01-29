@@ -5,7 +5,7 @@
 		<body>
 			
 			<trans-unit id="tx_news_domain_model_news.tabs.DDB" resname="tx_news_domain_model_news.tabs.DDB">
-				<source>Documentation Database</source>
+				<source>Documentation</source>
 			</trans-unit>
 			
 		</body>

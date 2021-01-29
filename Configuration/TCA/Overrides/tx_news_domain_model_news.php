@@ -69,7 +69,6 @@ $tmp_metarchivesdata = array(
                 ['Q7', 'Q7'],
                 ['Q8', 'Q8'],
             ],
-            'cols' => 'inline',
         ]
     ],
     'tx_news_metarchivesdata_recordsubprojects' => [
@@ -126,7 +125,6 @@ $GLOBALS['TCA']['tx_news_domain_model_news']['types']['0'] = [
         --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
             --palette--;;paletteLanguage,
         --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
-            notes,
             --palette--;;paletteHidden,
             --palette--;;paletteAccess,
         --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.extended,'
@@ -161,7 +159,7 @@ $GLOBALS['TCA']['tx_news_domain_model_news']['types']['0'] = [
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
  'tx_news_domain_model_news',
  'paletteManager',
- 'tx_news_metarchivesdata_recordmanager'
+ 'tx_news_metarchivesdata_recordmanager,--linebreak--,notes'
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
