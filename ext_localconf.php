@@ -3,6 +3,8 @@ defined('TYPO3_MODE') or die();
 
 $GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['classes']['Domain/Model/News'][] = 'news_metarchivesdata';
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="DIR:EXT:news_metarchivesdata/Configuration/TSconfig/Page" extensions="t3s">');
+
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="DIR:EXT:news_metarchivesdata/Configuration/TSconfig/Ext/News" extensions="t3s">');
 
 

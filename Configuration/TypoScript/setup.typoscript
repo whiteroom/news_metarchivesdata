@@ -1,0 +1,27 @@
+plugin.tx_news {
+    
+    
+    view {
+		templateRootPaths {
+			200 = EXT:news_metarchivesdata/Resources/Private/Ext/Headless_news/Templates/
+		}
+		partialRootPaths {
+			200 = EXT:news_metarchivesdata/Resources/Private/Ext/Headless_news/Partials/
+		}
+		layoutRootPaths {
+			200 = EXT:news_metarchivesdata/Resources/Private/Ext/Headless_news/Layouts/
+		}
+	}
+
+	
+    settings {
+
+        cssFile >
+		archiveRestriction = active
+        hidePagination = 1
+        displayDummyIfNoMedia = 0
+
+    }
+}
+
+	

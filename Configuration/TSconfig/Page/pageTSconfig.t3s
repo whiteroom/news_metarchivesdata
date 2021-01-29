@@ -1,0 +1,110 @@
+TCEFORM.pages.subtitle.label = Untertitel
+TCEFORM.pages.nav_title.label = Navigationstitel
+
+
+# --------------------------------------------------
+# TCEFORM.tt_content
+#
+
+TCEFORM.tt_content {
+	
+	#disable generally, we don't need this
+	CType.removeItems := addToList(textpic)
+	
+	
+	imagewidth.disabled = 1
+	imageheight.disabled = 1
+	imageborder.disabled = 1
+	linkToTop.disabled = 1
+	sectionIndex.disabled = 1
+	editlock.disabled = 1
+	fe_group.disabled = 1
+	date.disabled = 1
+	frame_class.disabled = 1
+
+	rowDescription.disabled = 0
+	spaceBefore.disabled = 0
+	spaceAfter.disabled = 0
+	space_before_class.disabled = 0
+	space_after_class.disabled = 0
+
+	
+	
+	
+
+	
+	imageorient {
+		disabled = 1
+
+	}
+	
+	imagecols {
+		
+		disabled = 0
+		removeItems = 5,6,7,8
+		
+	}
+
+	
+
+	
+	## Ueberschriften
+	header_layout {
+
+	     altLabels {
+	          0 = 
+	          1 = h1 - Themenueberschriften
+	          2 = h2 - Untertitel
+	          3 = h3 - Standard Absatz (gross)
+	          4 = h4 - kleiner Titel (fett)
+	          5 = 
+	          100 = Verbergen, Titel nicht zeigen
+	       }
+	     removeItems = 5
+
+	     
+	     types {
+		     
+		    header {
+			    altLabels {
+				    
+				}
+				removeItems = 4,5
+		    }
+		     
+		    textmedia.removeItems = 0,1,2,5
+		    text.removeItems = 0,1,2,5
+		    image.removeItems = 0,1,2,5
+		    table.removeItems = 0,1,2,5
+			bullets.removeItems = 0,1,2,5
+		}
+		
+	}
+
+}
+
+
+
+
+
+
+TCAdefaults.tt_content {
+
+    header_layout = 3
+    imagecols = 1
+
+	layout = 0
+	frame_class = none
+	spaceBefore = 0
+	spaceAfter = 0
+	
+	# LISTINGS: Use a definition-list by default
+	bullets_type = 2
+
+}
+
+
+
+
+
+
